@@ -1,0 +1,4 @@
+How to run:
+#+begin_src bash
+  emacs --batch --script task.el
+#+end_src
