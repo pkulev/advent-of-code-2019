@@ -67,18 +67,24 @@ ARGNUM says how much elements we must skip before set new PC.")
 (defun virtual-machine-deref (vm addr)
   (elt (virtual-machine-tape vm) addr))
 
-(defun solve-1 ()
+(defun solve-1 (tape)
+  (let ((vm (virtual-machine-do-forever tape)))
+    (message "tape: %s\nfirst: %s"
+             (virtual-machine-dump-tape vm)
+             (elt (virtual-machine-tape vm) 0))))
+
+(defun solve-2 (tape expected-result)
+  (let ((vm (make-virtual-machine :tape (copy-seq tape))))
+    (cl-loop for x in)))
+
+(defun solve ()
   (let ((tape (parse-program (get-input))))
     ;; Required by task description for final result
     (setf (elt tape 1) 12)
     (setf (elt tape 2) 2)
-    (let ((vm (virtual-machine-do-forever tape)))
-      (message "tape: %s\nfirst: %s"
-               (virtual-machine-dump-tape vm)
-               (elt (virtual-machine-tape vm) 0)))))
+    (solve-1 tape)
+    (solve-2 tape "19690720")))
 
-(solve-1)
-  
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
 ;; End:
