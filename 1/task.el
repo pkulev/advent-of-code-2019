@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
+(require 'cl-lib)
+
 (defun fuel-required (mass)
   (let ((fuel (- (round (/ mass 3)) 2)))
     (if (>= fuel 0) fuel 0)))

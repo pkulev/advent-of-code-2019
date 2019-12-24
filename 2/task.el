@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
+(require 'cl-lib)
+
 (defun get-input ()
   (with-temp-buffer
     (insert-file-contents "./input")
